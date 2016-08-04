@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#E9EEF4"
+    android:paddingBottom="6dp"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#D6D6D6" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/movie_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/text_margin"
+            android:layout_marginRight="@dimen/text_margin"
+            android:layout_toLeftOf="@+id/movie_image_iv"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
+        <TextView
+            android:id="@+id/movie_genres_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/movie_title_tv"
+            android:layout_toLeftOf="@+id/movie_image_iv"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
+        <ImageView
+            android:id="@+id/movie_image_iv"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:adjustViewBounds="true"
+            android:minHeight="50dp"
+            android:scaleType="fitXY" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#C8CDD3" />
+</LinearLayout>

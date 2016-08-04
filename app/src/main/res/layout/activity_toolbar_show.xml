@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".toolbarshow.ToolbarShowActivity">
+
+    <me.xihuxiaolong.library.widget.CustomToolbar
+        android:id="@+id/toolbar_left_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:left_firstText="功能"
+        app:right_firstIcon="@drawable/icon_search"
+        app:toolbar_title="toolbar演示-左-文字"/>
+
+    <me.xihuxiaolong.library.widget.CustomToolbar
+        android:id="@+id/toolbar_left_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:left_firstIcon="@drawable/icon_search"
+        app:toolbar_title="toolbar演示-左-图片"/>
+
+    <me.xihuxiaolong.library.widget.CustomToolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:toolbar_title="toolbar演示-无右角标"/>
+
+    <me.xihuxiaolong.library.widget.CustomToolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:right_firstText="功能"
+        app:toolbar_title="toolbar演示-右角标-文字"/>
+
+    <me.xihuxiaolong.library.widget.CustomToolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:right_firstIcon="@drawable/icon_search"
+        app:toolbar_title="toolbar演示-右角标-图片"/>
+
+    <me.xihuxiaolong.library.widget.CustomToolbar
+        android:id="@+id/toolbar4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:right_firstIcon="@drawable/icon_search"
+        app:right_secondIcon="@drawable/icon_search"
+        app:toolbar_title="右角标-图片-图片"/>
+
+</LinearLayout>

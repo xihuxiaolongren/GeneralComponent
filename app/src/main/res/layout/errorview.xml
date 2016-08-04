@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/errorView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:drawablePadding="10dp"
+    android:drawableTop="@drawable/icon_error"
+    android:gravity="center"
+    android:padding="50dp"
+    android:textColor="#999999"
+    android:textSize="20dp" />

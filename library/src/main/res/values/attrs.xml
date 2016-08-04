@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+     <declare-styleable name="CustomToolbar">
+         <attr name="left_firstIcon" format="integer" />
+         <attr name="left_firstText" format="string" />
+         <attr name="left_secondIcon" format="integer" />
+         <attr name="left_secondText" format="string" />
+         <attr name="right_firstIcon" format="integer" />
+         <attr name="right_firstText" format="string" />
+         <attr name="right_secondIcon" format="integer" />
+         <attr name="right_secondText" format="string" />
+         <attr name="toolbar_title" format="string" />
+     </declare-styleable>
+    
+</resources>
