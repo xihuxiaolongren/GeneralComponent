@@ -50,7 +50,7 @@ public class CityListFragment extends MvpLceFragment<RelativeLayout, List<List<C
 
     protected void injectDependencies() {
         component = DaggerCityListFragmentComponent.builder()
-                .appComponent(MyApplication.get(getActivity()).getAppComponent())
+                .appComponent(((MyApplication) getActivity().getApplication()).getAppComponent())
                 .build();
         component.inject(this);
     }

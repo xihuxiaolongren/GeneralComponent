@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import me.xihuxiaolong.generalcomponent.common.MyApplication;
 import me.xihuxiaolong.generalcomponent.common.model.DoubanHttpResult;
 import me.xihuxiaolong.generalcomponent.common.model.Subject;
+import me.xihuxiaolong.library.utils.NetUtil;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -48,22 +49,19 @@ public class DoubanApiServiceImpl implements DoubanApiService{
     }
 
     @Override
-    public void getTopMovie(Subscriber<List<Subject>> subscriber, final int start, final int count){
-        Observable<List<Subject>> observable = observeNetStatus(
+    public void getTopMovie(Context context, Subscriber<List<Subject>> subscriber, final int start, final int count){
+        Observable<List<Subject>> observable = observeNetStatus(context,
                 iDoubanApiService.getTopMovie(start, count)
                         .map(new HttpResultFunc<List<Subject>>()));
         toSubscribe(observable, subscriber);
     }
 
 
-    private <T> Observable<T> observeNetStatus(final Observable<T> observable){
+    private <T> Observable<T> observeNetStatus(final Context context, final Observable<T> observable){
         return Observable.create(new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
-                ConnectivityManager cm =
-                        (ConnectivityManager) MyApplication.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
-                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-                boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+                boolean isConnected = NetUtil.isConnected(context);
                 if (!isConnected) {
                     throw new ApiException("Wi-Fi和移动数据已断开");
                 }

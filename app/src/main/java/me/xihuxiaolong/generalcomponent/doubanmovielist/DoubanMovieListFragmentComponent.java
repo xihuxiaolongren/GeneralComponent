@@ -10,9 +10,10 @@ import me.xihuxiaolong.generalcomponent.common.dagger.scope.ActivityScope;
  * Date: 16/7/6.
  */
 @ActivityScope
-@Component(dependencies = AppComponent.class)
+@Component(dependencies = AppComponent.class, modules = {DoubanMovieListModule.class})
 public interface DoubanMovieListFragmentComponent{
 
     public void inject(DoubanMovieListFragment doubanMovieListFragment);
 
+    public DoubanMovieListFragmentPresenter presenter();
 }

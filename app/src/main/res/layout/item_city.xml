@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#E9EEF4"
+    android:background="@color/pageBg"
     android:orientation="vertical">
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#D6D6D6" />
+        android:layout_height="@dimen/divider_line"
+        android:background="@color/dividerLine" />
 
     <TextView
         android:id="@+id/city_tv"

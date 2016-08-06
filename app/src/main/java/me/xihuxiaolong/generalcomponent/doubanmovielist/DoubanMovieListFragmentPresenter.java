@@ -1,5 +1,7 @@
 package me.xihuxiaolong.generalcomponent.doubanmovielist;
 
+import android.content.Context;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,6 +28,9 @@ public class DoubanMovieListFragmentPresenter extends SimpleMvpLceListRxPresente
     DoubanApiService doubanApiService;
 
     @Inject
+    Context context;
+
+    @Inject
     public DoubanMovieListFragmentPresenter() {
         start = 0;
         count = 10;
@@ -35,12 +40,12 @@ public class DoubanMovieListFragmentPresenter extends SimpleMvpLceListRxPresente
     public void loadMovie(int status){
         if(status == CREATE) {
             start = 0;
-            doubanApiService.getTopMovie(subscribe(false), start, count);
+            doubanApiService.getTopMovie(context, subscribe(false), start, count);
         } else if(status == REFRESH) {
             start = 0;
-            doubanApiService.getTopMovie(subscribe(true), start, count);
+            doubanApiService.getTopMovie(context, subscribe(true), start, count);
         } else if(status == LOADMORE) {
-            doubanApiService.getTopMovie(subscribeLoadMore(), start, count);
+            doubanApiService.getTopMovie(context, subscribeLoadMore(), start, count);
         }
     }
 

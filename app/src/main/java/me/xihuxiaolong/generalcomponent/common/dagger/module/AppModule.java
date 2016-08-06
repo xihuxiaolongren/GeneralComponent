@@ -1,5 +1,6 @@
 package me.xihuxiaolong.generalcomponent.common.dagger.module;
 
+import android.app.Application;
 import android.content.Context;
 
 import javax.inject.Singleton;
@@ -16,21 +17,21 @@ import me.xihuxiaolong.library.utils.ToastUtil;
 @Module
 public class AppModule {
 
-    Context context;
+    Application application;
 
-    public AppModule(Context context){
-        this.context = context;
+    public AppModule(Application application){
+        this.application = application;
     }
 
     @Provides
-    public Context provideContext(){
-        return context;
+    public Application provideApplication(){
+        return application;
     }
 
     @Provides
     @Singleton
     public ToastUtil provideToastUtil(){
-        return new ToastUtil(context);
+        return new ToastUtil(application);
     }
 
 }

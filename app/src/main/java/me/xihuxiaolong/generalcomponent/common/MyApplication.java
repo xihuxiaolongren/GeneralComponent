@@ -8,6 +8,7 @@ import me.xihuxiaolong.generalcomponent.common.dagger.component.AppComponent;
 import me.xihuxiaolong.generalcomponent.common.dagger.component.DaggerAppComponent;
 import me.xihuxiaolong.generalcomponent.common.dagger.module.ApiServiceModule;
 import me.xihuxiaolong.generalcomponent.common.dagger.module.AppModule;
+import me.xihuxiaolong.generalcomponent.common.dagger.module.ImageServiceModule;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,10 +25,6 @@ public class MyApplication extends Application {
         return myApplication;
     }
 
-    public static MyApplication get(Context context){
-        return (MyApplication)context.getApplicationContext();
-    }
-
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
@@ -41,6 +38,7 @@ public class MyApplication extends Application {
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .apiServiceModule(new ApiServiceModule())
+                .imageServiceModule(new ImageServiceModule())
                 .build();
     }
 

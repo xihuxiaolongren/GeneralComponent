@@ -22,6 +22,8 @@ public abstract class LoadMoreRecyclerViewAdapter<VH extends RecyclerView.ViewHo
 
     protected final LayoutInflater mLayoutInflater;
 
+    protected Context mContext;
+
     FooterData footerData;
 
     LoadMoreViewHolder loadMoreViewHolder;
@@ -31,6 +33,7 @@ public abstract class LoadMoreRecyclerViewAdapter<VH extends RecyclerView.ViewHo
     LoadMoreAgainListener loadMoreAgainListener;
 
     public LoadMoreRecyclerViewAdapter(Context context, LoadMoreAgainListener loadMoreAgainListener){
+        this.mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
         footerData = new FooterData(null, 0);
         setFooter(footerData);

@@ -5,10 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import javax.inject.Inject;
 
 import me.xihuxiaolong.generalcomponent.R;
+import me.xihuxiaolong.generalcomponent.common.image.ImageService;
 import me.xihuxiaolong.generalcomponent.common.model.Subject;
 import me.xihuxiaolong.generalcomponent.common.mvp.LoadMoreRecyclerViewAdapter;
 
@@ -21,10 +23,12 @@ public class DoubanMovieListAdapter extends LoadMoreRecyclerViewAdapter<Recycler
 
     SubjectItemListener subjectItemListener;
 
-    @Inject
-    public DoubanMovieListAdapter(Context context, SubjectItemListener subjectItemListener) {
+    ImageService imageService;
+
+    public DoubanMovieListAdapter(Context context, SubjectItemListener subjectItemListener, ImageService imageService) {
         super(context, subjectItemListener);
         this.subjectItemListener = subjectItemListener;
+        this.imageService = imageService;
     }
 
     @Override
@@ -40,6 +44,7 @@ public class DoubanMovieListAdapter extends LoadMoreRecyclerViewAdapter<Recycler
         final Subject subject = getItem(position);
         ((DoubanMovieViewHolder) holder).movieTitleTv.setText(position + " " + subject.getTitle());
         ((DoubanMovieViewHolder) holder).movieGenresTv.setText(TextUtils.join(",", subject.getGenres()));
+        imageService.loadImageFromUrl(mContext, subject.getImages().getSmall(), ((DoubanMovieViewHolder) holder).movieImageIv, ImageView.ScaleType.FIT_CENTER);
         ((DoubanMovieViewHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

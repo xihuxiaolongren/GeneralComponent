@@ -1,5 +1,7 @@
 package me.xihuxiaolong.generalcomponent.common.api;
 
+import android.content.Context;
+
 import java.util.List;
 
 import me.xihuxiaolong.generalcomponent.common.model.Subject;
@@ -12,5 +14,5 @@ import rx.Subscriber;
  */
 public interface DoubanApiService {
 
-    public void getTopMovie(Subscriber<List<Subject>> subscriber, int start, int count);
+    public void getTopMovie(Context context, Subscriber<List<Subject>> subscriber, int start, int count);
 }

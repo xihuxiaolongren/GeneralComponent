@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import me.xihuxiaolong.generalcomponent.R;
 import me.xihuxiaolong.generalcomponent.common.MyApplication;
+import me.xihuxiaolong.generalcomponent.common.image.ImageService;
 import me.xihuxiaolong.generalcomponent.common.model.Subject;
 import me.xihuxiaolong.generalcomponent.common.mvp.LoadMoreRecyclerViewAdapter;
 import me.xihuxiaolong.generalcomponent.common.mvp.SimpleMvpLceListFragment;
@@ -32,6 +33,9 @@ public class DoubanMovieListFragment extends SimpleMvpLceListFragment<List<Subje
     @Inject
     DoubanMovieListFragmentPresenter presenter;
 
+    @Inject
+    ImageService imageService;
+
     DoubanMovieListFragmentComponent component;
 
     @Override
@@ -41,7 +45,7 @@ public class DoubanMovieListFragment extends SimpleMvpLceListFragment<List<Subje
 
     @Override
     protected DoubanMovieListAdapter createAdapter() {
-        return new DoubanMovieListAdapter(getContext(), subjectItemListener);
+        return new DoubanMovieListAdapter(getContext(), subjectItemListener, imageService);
     }
 
     DoubanMovieListAdapter.SubjectItemListener subjectItemListener = new DoubanMovieListAdapter.SubjectItemListener() {
@@ -60,7 +64,8 @@ public class DoubanMovieListFragment extends SimpleMvpLceListFragment<List<Subje
 
     protected void injectDependencies() {
         component = DaggerDoubanMovieListFragmentComponent.builder()
-                .appComponent(MyApplication.get(getContext()).getAppComponent())
+                .appComponent(((MyApplication) getActivity().getApplication()).getAppComponent())
+                .doubanMovieListModule(new DoubanMovieListModule(getContext()))
                 .build();
         component.inject(this);
     }
