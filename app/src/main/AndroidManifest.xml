@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.xihuxiaolong.generalcomponent">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".common.MyApplication"
@@ -23,11 +23,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".toolbarshow.ToolbarShowActivity" />
-        <activity
-            android:name=".doubanmovielist.DoubanMovieListActivity"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".citylist.CityListActivity" />
+        <activity android:name=".doubanmovielist.DoubanMovieListActivity" />
+        <activity android:name=".shortnotelist.ShortNoteListActivity" />
+        <activity android:name=".shortnoteedit.ShortNoteEditActivity" />
+        <activity android:name=".citylist.CityListActivity" />
     </application>
 
 </manifest>

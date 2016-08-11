@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import me.xihuxiaolong.generalcomponent.common.api.TXApiService;
+import me.xihuxiaolong.generalcomponent.common.api.ITXApiService;
 import me.xihuxiaolong.generalcomponent.common.model.City;
 import me.xihuxiaolong.generalcomponent.common.mvp.SimpleMvpLceRxPresenter;
 
@@ -17,10 +17,10 @@ import me.xihuxiaolong.generalcomponent.common.mvp.SimpleMvpLceRxPresenter;
  * User: xiaolong
  * Date: 16/7/6.
  */
-public class CityListFragmentPresenter extends SimpleMvpLceRxPresenter<CityListContract.View<List<List<City>>>, List<List<City>>>{
+public class CityListFragmentPresenter extends SimpleMvpLceRxPresenter<CityListContract.IView<List<List<City>>>, List<List<City>>>{
 
     @Inject
-    TXApiService txApiService;
+    ITXApiService txApiService;
 
     HashMap<String, Integer> letters = new HashMap<>();
     ArrayList<String> customLetters = new ArrayList<>();

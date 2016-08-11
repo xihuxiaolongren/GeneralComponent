@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface CityListContract {
 
-    interface View<M> extends MvpLceView<M> {
+    interface IView<M> extends MvpLceView<M> {
 
         void setQuickSideBarTipsData(List<String> letters);
 

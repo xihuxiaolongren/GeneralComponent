@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.xihuxiaolong.generalcomponent.R;
 import me.xihuxiaolong.generalcomponent.citylist.CityListActivity;
+import me.xihuxiaolong.generalcomponent.shortnotelist.ShortNoteListActivity;
 import me.xihuxiaolong.generalcomponent.toolbarshow.ToolbarShowActivity;
 import me.xihuxiaolong.generalcomponent.doubanmovielist.DoubanMovieListActivity;
 import me.xihuxiaolong.library.widget.CustomToolbar;
@@ -35,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.show_mvp_sticky_list)
     FancyButton showMvpStickyList;
 
-    @BindView(R.id.show_toolbar4_btn)
-    FancyButton showToolbar4Btn;
+    @BindView(R.id.show_greendao_case)
+    FancyButton showGreendaoCase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         showToolbar1Btn.setText("简单toolbar");
         showMvpList.setText("mvp模式列表");
         showMvpStickyList.setText("mvp模式分层列表");
-        showToolbar4Btn.setText("简单toolbar3");
+        showGreendaoCase.setText("greenDao演示");
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @OnClick({ R.id.show_toolbar1_btn, R.id.show_mvp_list, R.id.show_mvp_sticky_list })
+    @OnClick({ R.id.show_toolbar1_btn, R.id.show_mvp_list, R.id.show_mvp_sticky_list, R.id.show_greendao_case})
     public void onButtonClick(View view) {
         switch (view.getId()){
             case R.id.show_toolbar1_btn:
@@ -67,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.show_mvp_sticky_list:
                 startActivity(new Intent(this, CityListActivity.class));
+                break;
+            case R.id.show_greendao_case:
+                startActivity(new Intent(this, ShortNoteListActivity.class));
                 break;
         }
     }

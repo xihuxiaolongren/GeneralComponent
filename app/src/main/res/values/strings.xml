@@ -2,4 +2,7 @@
     <string name="app_name">GeneralComponent</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_common_list">CommonListActivity</string>
+    <string name="menu_delete">删除</string>
+    <string name="menu_save">添加</string>
+    <string name="shortnote_edit">便签</string>
 </resources>

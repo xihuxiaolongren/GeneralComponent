@@ -42,7 +42,6 @@ public abstract class SimpleMvpLceListRxPresenter<V extends IMvpLceListView<M, D
     if (subscriber != null && !subscriber.isUnsubscribed()) {
       subscriber.unsubscribe();
     }
-//    subscriber = null;
   }
 
   /**

@@ -37,6 +37,7 @@ public abstract class LoadMoreRecyclerViewAdapter<VH extends RecyclerView.ViewHo
         mLayoutInflater = LayoutInflater.from(context);
         footerData = new FooterData(null, 0);
         setFooter(footerData);
+        hideFooter();
         this.loadMoreAgainListener = loadMoreAgainListener;
         notifyDataSetChanged();
     }

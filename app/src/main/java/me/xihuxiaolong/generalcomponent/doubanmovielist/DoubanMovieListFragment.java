@@ -21,6 +21,7 @@ import me.xihuxiaolong.generalcomponent.common.mvp.LoadMoreRecyclerViewAdapter;
 import me.xihuxiaolong.generalcomponent.common.mvp.SimpleMvpLceListFragment;
 import me.xihuxiaolong.generalcomponent.common.mvp.SimpleMvpLceListRxPresenter;
 import me.xihuxiaolong.generalcomponent.common.mvp.IMvpLceListView;
+import me.xihuxiaolong.generalcomponent.common.util.ActivityUtils;
 
 /**
  *
@@ -64,7 +65,7 @@ public class DoubanMovieListFragment extends SimpleMvpLceListFragment<List<Subje
 
     protected void injectDependencies() {
         component = DaggerDoubanMovieListFragmentComponent.builder()
-                .appComponent(((MyApplication) getActivity().getApplication()).getAppComponent())
+                .appComponent(ActivityUtils.getAppComponent(getActivity()))
                 .doubanMovieListModule(new DoubanMovieListModule(getContext()))
                 .build();
         component.inject(this);
@@ -72,7 +73,6 @@ public class DoubanMovieListFragment extends SimpleMvpLceListFragment<List<Subje
 
     @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
         loadData(false);
     }
 

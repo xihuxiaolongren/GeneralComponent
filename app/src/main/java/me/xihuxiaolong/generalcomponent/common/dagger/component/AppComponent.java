@@ -1,15 +1,15 @@
 package me.xihuxiaolong.generalcomponent.common.dagger.component;
 
-import android.content.Context;
-
 import javax.inject.Singleton;
 
 import dagger.Component;
-import me.xihuxiaolong.generalcomponent.common.api.DoubanApiService;
-import me.xihuxiaolong.generalcomponent.common.api.TXApiService;
+import me.xihuxiaolong.generalcomponent.common.api.IDoubanApiService;
+import me.xihuxiaolong.generalcomponent.common.api.ITXApiService;
 import me.xihuxiaolong.generalcomponent.common.dagger.module.ApiServiceModule;
 import me.xihuxiaolong.generalcomponent.common.dagger.module.AppModule;
+import me.xihuxiaolong.generalcomponent.common.dagger.module.DatabaseManagerModule;
 import me.xihuxiaolong.generalcomponent.common.dagger.module.ImageServiceModule;
+import me.xihuxiaolong.generalcomponent.common.database.manager.IMainDatabaseManager;
 import me.xihuxiaolong.generalcomponent.common.image.ImageService;
 import me.xihuxiaolong.library.utils.ToastUtil;
 
@@ -19,15 +19,17 @@ import me.xihuxiaolong.library.utils.ToastUtil;
  * Date: 16/7/6.
  */
 @Singleton
-@Component(modules={AppModule.class, ApiServiceModule.class, ImageServiceModule.class})
+@Component(modules={AppModule.class, ApiServiceModule.class, ImageServiceModule.class, DatabaseManagerModule.class})
 public interface AppComponent {
 
     ToastUtil getToastUtil();
 
-    DoubanApiService getDoubanApiService();
+    IDoubanApiService getDoubanApiService();
 
-    TXApiService getTXApiService();
+    ITXApiService getTXApiService();
 
     ImageService getImageService();
+
+    IMainDatabaseManager getMainDatabaseManager();
 
 }

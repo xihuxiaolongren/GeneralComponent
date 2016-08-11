@@ -8,6 +8,7 @@ import me.xihuxiaolong.generalcomponent.common.dagger.component.AppComponent;
 import me.xihuxiaolong.generalcomponent.common.dagger.component.DaggerAppComponent;
 import me.xihuxiaolong.generalcomponent.common.dagger.module.ApiServiceModule;
 import me.xihuxiaolong.generalcomponent.common.dagger.module.AppModule;
+import me.xihuxiaolong.generalcomponent.common.dagger.module.DatabaseManagerModule;
 import me.xihuxiaolong.generalcomponent.common.dagger.module.ImageServiceModule;
 
 /**
@@ -39,7 +40,9 @@ public class MyApplication extends Application {
                 .appModule(new AppModule(this))
                 .apiServiceModule(new ApiServiceModule())
                 .imageServiceModule(new ImageServiceModule())
+                .databaseManagerModule(new DatabaseManagerModule())
                 .build();
+        mAppComponent.getMainDatabaseManager().initDatabase(-1L);
     }
 
     public AppComponent getAppComponent(){

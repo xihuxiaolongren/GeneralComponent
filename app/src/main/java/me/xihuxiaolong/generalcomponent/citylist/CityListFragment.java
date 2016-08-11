@@ -30,7 +30,7 @@ import me.xihuxiaolong.generalcomponent.common.model.City;
  * User: xiaolong
  * Date: 16/7/5.
  */
-public class CityListFragment extends MvpLceFragment<RelativeLayout, List<List<City>>, CityListContract.View<List<List<City>>>, CityListFragmentPresenter> implements CityListContract.View<List<List<City>>>, OnQuickSideBarTouchListener {
+public class CityListFragment extends MvpLceFragment<RelativeLayout, List<List<City>>, CityListContract.IView<List<List<City>>>, CityListFragmentPresenter> implements CityListContract.IView<List<List<City>>>, OnQuickSideBarTouchListener {
 
     @Inject
     CityListFragmentPresenter presenter;

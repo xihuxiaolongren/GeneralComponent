@@ -21,7 +21,8 @@ import me.xihuxiaolong.generalcomponent.base.listener.EndlessRecyclerOnScrollLis
  * @param <D>  每次列表加载的数据结构
  */
 //public abstract class SimpleMvpLceListFragment<M, D> extends MvpLceFragment<SwipeRefreshLayout, M, IMvpLceListView<M, D>, SimpleMvpLceListRxPresenter<IMvpLceListView<M, D>, M, D> > implements IMvpLceListView<M,D>, SwipeRefreshLayout.OnRefreshListener {
-public abstract class SimpleMvpLceListFragment<M, D, P extends MvpPresenter<IMvpLceListView<M,D>>> extends MvpLceFragment<SwipeRefreshLayout, M, IMvpLceListView<M, D>, P> implements IMvpLceListView<M,D>, SwipeRefreshLayout.OnRefreshListener {
+public abstract class SimpleMvpLceListFragment<M, D, P extends MvpPresenter<IMvpLceListView<M,D>>> extends MvpLceFragment<SwipeRefreshLayout, M, IMvpLceListView<M, D>, P>
+        implements IMvpLceListView<M,D>, SwipeRefreshLayout.OnRefreshListener {
 
     protected RecyclerView recyclerView;
 //    protected SwipeRefreshLayout swipeRefreshLayout;

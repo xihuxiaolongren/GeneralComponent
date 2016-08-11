@@ -16,7 +16,13 @@ public class ToastUtil {
         this.mContext = context;
     }
 
-    public void showToast(String message){
-        Toast.makeText(mContext,message, Toast.LENGTH_LONG).show();
+    public void showToast(String message, int duration){
+        Toast.makeText(mContext,message, duration).show();
+    }
+
+    public void showToast(String message, int duration, int gravity){
+        Toast toast = Toast.makeText(mContext,message, duration);
+        toast.setGravity(gravity, 0, 0);
+        toast.show();
     }
 }

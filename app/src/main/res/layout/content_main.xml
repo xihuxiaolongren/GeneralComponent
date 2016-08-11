@@ -43,7 +43,7 @@
         android:layout_marginTop="20dp"/>
 
     <include layout="@layout/custom_single_big_solid_button"
-        android:id="@+id/show_toolbar4_btn"
+        android:id="@+id/show_greendao_case"
         android:layout_height="@dimen/default_big_button_height"
         android:layout_width="match_parent"
         android:layout_marginLeft="20dp"

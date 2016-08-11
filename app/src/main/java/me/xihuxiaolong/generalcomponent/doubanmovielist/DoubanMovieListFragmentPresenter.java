@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import me.xihuxiaolong.generalcomponent.common.api.DoubanApiService;
+import me.xihuxiaolong.generalcomponent.common.api.IDoubanApiService;
 import me.xihuxiaolong.generalcomponent.common.model.Subject;
 import me.xihuxiaolong.generalcomponent.common.mvp.SimpleMvpLceListRxPresenter;
 import me.xihuxiaolong.generalcomponent.common.mvp.IMvpLceListView;
@@ -25,7 +25,7 @@ public class DoubanMovieListFragmentPresenter extends SimpleMvpLceListRxPresente
     int start, count;
 
     @Inject
-    DoubanApiService doubanApiService;
+    IDoubanApiService doubanApiService;
 
     @Inject
     Context context;
