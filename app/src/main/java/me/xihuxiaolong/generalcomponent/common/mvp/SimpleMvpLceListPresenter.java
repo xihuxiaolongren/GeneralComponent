@@ -28,7 +28,7 @@ import rx.Subscriber;
  * @author Hannes Dorfmann
  * @since 1.0.0
  */
-public abstract class SimpleMvpLceListPresenter<V extends IMvpLceListView<M, D>, M, D>
+public abstract class SimpleMvpLceListPresenter<V extends IMvpLceListView<M>, M>
     extends MvpBasePresenter<V>
     implements MvpPresenter<V> {
 
@@ -56,9 +56,9 @@ public abstract class SimpleMvpLceListPresenter<V extends IMvpLceListView<M, D>,
     }
   }
 
-  protected void onLoadMoreNext(D d) {
+  protected void onLoadMoreNext(M data) {
     if (isViewAttached()) {
-      getView().setMoreData(d);
+      getView().setMoreData(data);
     }
   }
 

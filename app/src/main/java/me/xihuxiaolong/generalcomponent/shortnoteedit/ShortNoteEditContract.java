@@ -1,5 +1,6 @@
 package me.xihuxiaolong.generalcomponent.shortnoteedit;
 
+import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 
@@ -10,11 +11,13 @@ import me.xihuxiaolong.generalcomponent.common.database.localentity.DBShortNote;
  * User: xiaolong
  * Date: 16/8/10.
  */
-public class ShorNoteEditContract {
+public class ShortNoteEditContract {
 
     interface IView extends MvpView {
 
-        void setTitle(String title);
+        void showDeleteMenu(boolean visible);
+
+        void setText(String text);
 
         void saveSuccess();
 
@@ -24,7 +27,9 @@ public class ShorNoteEditContract {
 
     }
 
-    interface IPresenter extends MvpPresenter<IView> {
+    interface IPresenter extends MvpPresenter<IView>{
+
+        void loadShortNote();
 
         void saveShortNote(String text);
 

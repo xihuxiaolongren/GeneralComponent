@@ -5,6 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import me.xihuxiaolong.generalcomponent.R;
 import me.xihuxiaolong.generalcomponent.common.database.localentity.DBShortNote;
 import me.xihuxiaolong.generalcomponent.common.image.ImageService;
@@ -22,7 +25,7 @@ public class ShortNoteListAdapter extends LoadMoreRecyclerViewAdapter<RecyclerVi
     ImageService imageService;
 
     public ShortNoteListAdapter(Context context, ShortNoteItemListener shortNoteItemListener, ImageService imageService) {
-        super(context, shortNoteItemListener);
+        super(context);
         this.shortNoteItemListener = shortNoteItemListener;
         this.imageService = imageService;
     }
@@ -48,7 +51,42 @@ public class ShortNoteListAdapter extends LoadMoreRecyclerViewAdapter<RecyclerVi
 
     }
 
-    public interface ShortNoteItemListener extends LoadMoreAgainListener{
+    public void removeShortNote(long shortNoteId){
+        if(mList != null && !mList.isEmpty())
+            for(DBShortNote shortNote : mList){
+                if(shortNoteId == shortNote.getId()) {
+                    mList.remove(shortNote);
+                    notifyDataSetChanged();
+                    break;
+                }
+            }
+    }
+
+    public void addShortNote(DBShortNote shortNote){
+        if(mList != null && !mList.isEmpty()){
+            mList.add(0, shortNote);
+        }else{
+            mList = Arrays.asList(shortNote);
+            setItems(mList);
+        }
+        notifyDataSetChanged();
+    }
+
+    public void updateShortNote(DBShortNote shortNote){
+        if(mList != null && !mList.isEmpty()) {
+            int pos = 0;
+            for (DBShortNote shortNote1 : mList) {
+                if (shortNote1.getId().equals(shortNote.getId())) {
+                    mList.set(pos, shortNote);
+                    notifyDataSetChanged();
+                    break;
+                }
+                pos++;
+            }
+        }
+    }
+
+    public interface ShortNoteItemListener{
 
         void onShortNoteClick(DBShortNote dbShortNote);
 

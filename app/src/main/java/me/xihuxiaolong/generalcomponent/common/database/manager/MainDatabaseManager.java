@@ -32,9 +32,7 @@ public class MainDatabaseManager implements IMainDatabaseManager {
 
     private static final String MAIN_DB_NAME_SUFFIX = "_main_db";
 
-    public static MainDatabaseManager getInstance(){
-        return SingletonHolder.instance;
-    }
+    public MainDatabaseManager(){}
 
     /**
      * 打开数据库连接
@@ -83,23 +81,20 @@ public class MainDatabaseManager implements IMainDatabaseManager {
 
     @Override
     public long insertOrReplaceShortNote(DBShortNote dbShortNote) {
+        if(dbShortNote.getId() == null){
+            dbShortNote.setCreatedTime(System.currentTimeMillis());
+        }
+        dbShortNote.setModifiedTime(System.currentTimeMillis());
         return daoSession.getDBShortNoteDao().insertOrReplace(dbShortNote);
     }
 
     @Override
     public List<DBShortNote> listDBShortNotes(Long id, int count) {
         if(id == null)
-            return daoSession.getDBShortNoteDao().queryBuilder().orderDesc().limit(count).list();
+            return daoSession.getDBShortNoteDao().queryBuilder().orderDesc(DBShortNoteDao.Properties.Id).limit(count).list();
         else
             return daoSession.getDBShortNoteDao().queryBuilder()
-                    .where(DBShortNoteDao.Properties.Id.lt(id)).orderDesc().limit(count).list();
-    }
-
-    private MainDatabaseManager(){}
-
-    private static class SingletonHolder{
-        /** 单例变量  */
-        private static MainDatabaseManager instance = new MainDatabaseManager();
+                    .where(DBShortNoteDao.Properties.Id.lt(id)).orderDesc(DBShortNoteDao.Properties.Id).limit(count).list();
     }
 
     /**

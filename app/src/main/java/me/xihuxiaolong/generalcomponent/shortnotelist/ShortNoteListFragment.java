@@ -22,13 +22,14 @@ import me.xihuxiaolong.generalcomponent.common.image.ImageService;
 import me.xihuxiaolong.generalcomponent.common.mvp.SimpleMvpLceListFragment;
 import me.xihuxiaolong.generalcomponent.common.util.ActivityUtils;
 import me.xihuxiaolong.generalcomponent.shortnoteedit.ShortNoteEditActivity;
+import me.xihuxiaolong.generalcomponent.shortnoteedit.ShortNoteEditFragment;
 
 /**
  * Created by IntelliJ IDEA.
  * User: xiaolong
  * Date: 16/7/5.
  */
-public class ShortNoteListFragment extends SimpleMvpLceListFragment<List<DBShortNote>, List<DBShortNote>, ShortNoteListFragmentPresenter> {
+public class ShortNoteListFragment extends SimpleMvpLceListFragment<List<DBShortNote>, ShortNoteListContract.IView, ShortNoteListFragmentPresenter> implements ShortNoteListContract.IView{
 
     @Inject
     ShortNoteListFragmentPresenter presenter;
@@ -54,20 +55,14 @@ public class ShortNoteListFragment extends SimpleMvpLceListFragment<List<DBShort
     ShortNoteListAdapter.ShortNoteItemListener shortNoteItemListener = new ShortNoteListAdapter.ShortNoteItemListener() {
 
         @Override
-        public void loadmore() {
-            loadMoreData();
-        }
-
-        @Override
         public void onShortNoteClick(DBShortNote dbShortNote) {
-
+            startActivity(new Intent(getActivity(), ShortNoteEditActivity.class).putExtra(ShortNoteEditFragment.ARGUMENT_EDIT_SHORTNOTE_ID, dbShortNote.getId()));
         }
     };
 
     protected void injectDependencies() {
         component = DaggerShortNoteListFragmentComponent.builder()
                 .appComponent(ActivityUtils.getAppComponent(getActivity()))
-//                .shortNoteListModule(new ShortNoteListModule(getContext()))
                 .build();
         component.inject(this);
     }
@@ -121,5 +116,25 @@ public class ShortNoteListFragment extends SimpleMvpLceListFragment<List<DBShort
     @Override
     public void loadMoreData() {
         presenter.loadShortNotes(ShortNoteListFragmentPresenter.LOADMORE);
+    }
+
+    @Override
+    public void removeShortNoteItem(long shortNoteId) {
+        ((ShortNoteListAdapter) adapter).removeShortNote(shortNoteId);
+    }
+
+    @Override
+    public void addShortNoteItem(DBShortNote shortNote) {
+        ((ShortNoteListAdapter) adapter).addShortNote(shortNote);
+    }
+
+    @Override
+    public void updateShortNoteItem(DBShortNote shortNote) {
+        ((ShortNoteListAdapter) adapter).updateShortNote(shortNote);
+    }
+
+    @Override
+    public void loadmore() {
+        loadMoreData();
     }
 }

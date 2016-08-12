@@ -2,7 +2,7 @@ package me.xihuxiaolong.generalcomponent.shortnoteedit;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,11 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.hannesdorfmann.mosby.mvp.MvpFragment;
-import com.rengwuxian.materialedittext.MaterialEditText;
 
 import javax.inject.Inject;
 
@@ -30,7 +28,9 @@ import me.xihuxiaolong.library.utils.ToastUtil;
  * User: xiaolong
  * Date: 16/7/5.
  */
-public class ShortNoteEditFragment extends MvpFragment<ShorNoteEditContract.IView, ShortNoteEditFragmentPresenter> implements ShorNoteEditContract.IView {
+public class ShortNoteEditFragment extends MvpFragment<ShortNoteEditContract.IView, ShortNoteEditFragmentPresenter> implements ShortNoteEditContract.IView {
+
+    public static final String ARGUMENT_EDIT_SHORTNOTE_ID = "EDIT_SHORTNOTE_ID";
 
     @Inject
     ShortNoteEditFragmentPresenter presenter;
@@ -46,9 +46,12 @@ public class ShortNoteEditFragment extends MvpFragment<ShorNoteEditContract.IVie
     @BindView(R.id.edittext)
     EditText edittext;
 
-    protected void injectDependencies() {
+    private Menu menu;
+
+    protected void injectDependencies(Long shortNoteId) {
         component = DaggerShortNoteEditFragmentComponent.builder()
                 .appComponent(ActivityUtils.getAppComponent(getActivity()))
+                .shortNoteEditModule(new ShortNoteEditModule(shortNoteId))
                 .build();
         component.inject(this);
     }
@@ -67,11 +70,11 @@ public class ShortNoteEditFragment extends MvpFragment<ShorNoteEditContract.IVie
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        injectDependencies();
+        Long shortNoteId = getArguments().getLong(ARGUMENT_EDIT_SHORTNOTE_ID);
+        injectDependencies(shortNoteId);
         View view = inflater.inflate(R.layout.fragment_shortnote_edit, container, false);
         ButterKnife.bind(this, view);
         setHasOptionsMenu(true);
-
         return view;
     }
 
@@ -80,11 +83,13 @@ public class ShortNoteEditFragment extends MvpFragment<ShorNoteEditContract.IVie
         switch (item.getItemId()) {
             case R.id.menu_delete:
                 toastUtil.showToast("delete", Toast.LENGTH_SHORT);
-                presenter.deleteShortNote(null);
+                presenter.deleteShortNote();
                 return true;
             case R.id.menu_save:
-                toastUtil.showToast("save", Toast.LENGTH_SHORT);
-                presenter.saveShortNote(null);
+                if(TextUtils.isEmpty(edittext.getText()))
+                    toastUtil.showToast("不能保存一条空的便签", Toast.LENGTH_SHORT);
+                else
+                    presenter.saveShortNote(edittext.getText().toString());
                 return true;
         }
         return false;
@@ -93,21 +98,28 @@ public class ShortNoteEditFragment extends MvpFragment<ShorNoteEditContract.IVie
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.fragment_shortnote_edit_menu, menu);
+        this.menu = menu;
+        presenter.loadShortNote();
     }
 
     @Override
-    public void setTitle(String title) {
+    public void showDeleteMenu(boolean visible) {
+        menu.findItem(R.id.menu_delete).setVisible(visible);
+    }
 
+    @Override
+    public void setText(String text) {
+        edittext.setText(text);
     }
 
     @Override
     public void saveSuccess() {
-
+        getActivity().finish();
     }
 
     @Override
     public void deleteSuccess() {
-
+        getActivity().finish();
     }
 
     @Override

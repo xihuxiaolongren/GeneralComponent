@@ -21,9 +21,16 @@ public class ShortNoteEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_common_1);
         ButterKnife.bind(this);
 
+        ShortNoteEditFragment shortNoteEditFragment = new ShortNoteEditFragment();
+        Long shortnoteId = getIntent().getLongExtra(ShortNoteEditFragment.ARGUMENT_EDIT_SHORTNOTE_ID, -1L);
+        if(shortnoteId != null) {
+            Bundle bundle = new Bundle();
+            bundle.putLong(ShortNoteEditFragment.ARGUMENT_EDIT_SHORTNOTE_ID, shortnoteId);
+            shortNoteEditFragment.setArguments(bundle);
+        }
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragmentContainer, new ShortNoteEditFragment())
+                    .add(R.id.fragmentContainer, shortNoteEditFragment)
                     .commit();
         }
 

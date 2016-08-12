@@ -26,7 +26,7 @@ public class DoubanMovieListAdapter extends LoadMoreRecyclerViewAdapter<Recycler
     ImageService imageService;
 
     public DoubanMovieListAdapter(Context context, SubjectItemListener subjectItemListener, ImageService imageService) {
-        super(context, subjectItemListener);
+        super(context);
         this.subjectItemListener = subjectItemListener;
         this.imageService = imageService;
     }
@@ -54,7 +54,7 @@ public class DoubanMovieListAdapter extends LoadMoreRecyclerViewAdapter<Recycler
 
     }
 
-    public interface SubjectItemListener extends LoadMoreAgainListener{
+    public interface SubjectItemListener{
 
         void onSubjectClick(Subject subject);
 

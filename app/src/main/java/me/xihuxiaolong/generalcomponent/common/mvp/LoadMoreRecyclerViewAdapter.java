@@ -18,7 +18,7 @@ import me.xihuxiaolong.generalcomponent.R;
  * User: xiaolong
  * Date: 16/7/5.
  */
-public abstract class LoadMoreRecyclerViewAdapter<VH extends RecyclerView.ViewHolder, H, T> extends HeaderRecyclerViewAdapter<VH, H, T, LoadMoreRecyclerViewAdapter.FooterData> {
+public abstract class LoadMoreRecyclerViewAdapter<VH extends RecyclerView.ViewHolder, H, T> extends HeaderRecyclerViewAdapter<VH, H, T, LoadMoreRecyclerViewAdapter.FooterData>{
 
     protected final LayoutInflater mLayoutInflater;
 
@@ -28,18 +28,21 @@ public abstract class LoadMoreRecyclerViewAdapter<VH extends RecyclerView.ViewHo
 
     LoadMoreViewHolder loadMoreViewHolder;
 
-    private List<T> mList;
+    protected List<T> mList;
 
     LoadMoreAgainListener loadMoreAgainListener;
 
-    public LoadMoreRecyclerViewAdapter(Context context, LoadMoreAgainListener loadMoreAgainListener){
+    public LoadMoreRecyclerViewAdapter(Context context){
         this.mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
         footerData = new FooterData(null, 0);
         setFooter(footerData);
         hideFooter();
-        this.loadMoreAgainListener = loadMoreAgainListener;
         notifyDataSetChanged();
+    }
+
+    public void setLoadMoreAgainListener(LoadMoreAgainListener loadMoreAgainListener){
+        this.loadMoreAgainListener = loadMoreAgainListener;
     }
 
     @Override

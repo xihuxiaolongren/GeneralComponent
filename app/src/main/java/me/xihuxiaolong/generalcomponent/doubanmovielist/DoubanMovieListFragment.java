@@ -29,7 +29,7 @@ import me.xihuxiaolong.generalcomponent.common.util.ActivityUtils;
  * User: xiaolong
  * Date: 16/7/5.
  */
-public class DoubanMovieListFragment extends SimpleMvpLceListFragment<List<Subject>, List<Subject>, SimpleMvpLceListRxPresenter<IMvpLceListView<List<Subject>, List<Subject>>, List<Subject>, List<Subject>> > {
+public class DoubanMovieListFragment extends SimpleMvpLceListFragment<List<Subject>, DoubanMovieListContract.IView, SimpleMvpLceListRxPresenter<DoubanMovieListContract.IView, List<Subject>> > {
 
     @Inject
     DoubanMovieListFragmentPresenter presenter;
@@ -40,7 +40,7 @@ public class DoubanMovieListFragment extends SimpleMvpLceListFragment<List<Subje
     DoubanMovieListFragmentComponent component;
 
     @Override
-    public SimpleMvpLceListRxPresenter<IMvpLceListView<List<Subject>, List<Subject>>, List<Subject>, List<Subject>> createPresenter() {
+    public SimpleMvpLceListRxPresenter<DoubanMovieListContract.IView, List<Subject>> createPresenter() {
         return presenter;
     }
 
@@ -50,11 +50,6 @@ public class DoubanMovieListFragment extends SimpleMvpLceListFragment<List<Subje
     }
 
     DoubanMovieListAdapter.SubjectItemListener subjectItemListener = new DoubanMovieListAdapter.SubjectItemListener() {
-
-        @Override
-        public void loadmore() {
-            loadMoreData();
-        }
 
         @Override
         public void onSubjectClick(Subject subject) {
@@ -91,10 +86,10 @@ public class DoubanMovieListFragment extends SimpleMvpLceListFragment<List<Subje
 
     @Override
     public void loadData(boolean pullToRefresh) {
-        if(pullToRefresh == true)
-            presenter.loadMovie(DoubanMovieListFragmentPresenter.REFRESH);
+        if(pullToRefresh)
+            presenter.reLoadMovie();
         else
-            presenter.loadMovie(DoubanMovieListFragmentPresenter.CREATE);
+            presenter.loadMovie();
     }
 
     @Override
@@ -109,6 +104,11 @@ public class DoubanMovieListFragment extends SimpleMvpLceListFragment<List<Subje
 
     @Override
     public void loadMoreData() {
-        presenter.loadMovie(DoubanMovieListFragmentPresenter.LOADMORE);
+        presenter.loadMoreMovie();
+    }
+
+    @Override
+    public void loadmore() {
+        loadMoreData();
     }
 }

@@ -6,7 +6,6 @@ import dagger.Module;
 import dagger.Provides;
 import me.xihuxiaolong.generalcomponent.common.database.manager.IMainDatabaseManager;
 import me.xihuxiaolong.generalcomponent.common.database.manager.MainDatabaseManager;
-import me.xihuxiaolong.generalcomponent.common.image.ImageService;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,7 +18,7 @@ public class DatabaseManagerModule {
     @Provides
     @Singleton
     IMainDatabaseManager provideDataBaseManager() {
-        return MainDatabaseManager.getInstance();
+        return new MainDatabaseManager();
     }
 
 }

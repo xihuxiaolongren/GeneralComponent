@@ -10,10 +10,10 @@ import me.xihuxiaolong.generalcomponent.common.dagger.scope.ActivityScope;
  * Date: 16/7/6.
  */
 @ActivityScope
-@Component(dependencies = AppComponent.class)
+@Component(dependencies = AppComponent.class, modules = {ShortNoteEditModule.class})
 public interface ShortNoteEditFragmentComponent {
 
-    public void inject(ShortNoteEditFragment shortNoteEditFragment);
+    void inject(ShortNoteEditFragment shortNoteEditFragment);
 
-    public ShortNoteEditFragmentPresenter presenter();
+    ShortNoteEditFragmentPresenter presenter();
 }

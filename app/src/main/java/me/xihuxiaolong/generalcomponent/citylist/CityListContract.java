@@ -1,8 +1,11 @@
 package me.xihuxiaolong.generalcomponent.citylist;
 
+import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 
 import java.util.List;
+
+import me.xihuxiaolong.generalcomponent.common.model.City;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,10 +14,15 @@ import java.util.List;
  */
 public interface CityListContract {
 
-    interface IView<M> extends MvpLceView<M> {
+    interface IView extends MvpLceView<List<List<City>>> {
 
         void setQuickSideBarTipsData(List<String> letters);
 
         void scrollToPosition(int position);
+    }
+
+    interface IPresenter extends MvpPresenter<IView> {
+
+        void loadCityData();
     }
 }

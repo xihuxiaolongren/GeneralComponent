@@ -13,7 +13,7 @@ import me.xihuxiaolong.generalcomponent.common.dagger.scope.ActivityScope;
 @Component(dependencies = AppComponent.class, modules = {ShortNoteListModule.class})
 public interface ShortNoteListFragmentComponent {
 
-    public void inject(ShortNoteListFragment shortNoteListFragment);
+    void inject(ShortNoteListFragment shortNoteListFragment);
 
-    public ShortNoteListFragmentPresenter presenter();
+    ShortNoteListFragmentPresenter presenter();
 }

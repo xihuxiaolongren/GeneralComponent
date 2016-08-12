@@ -17,7 +17,7 @@ import me.xihuxiaolong.generalcomponent.common.mvp.SimpleMvpLceRxPresenter;
  * User: xiaolong
  * Date: 16/7/6.
  */
-public class CityListFragmentPresenter extends SimpleMvpLceRxPresenter<CityListContract.IView<List<List<City>>>, List<List<City>>>{
+public class CityListFragmentPresenter extends SimpleMvpLceRxPresenter<CityListContract.IView, List<List<City>>> implements CityListContract.IPresenter{
 
     @Inject
     ITXApiService txApiService;
@@ -28,7 +28,8 @@ public class CityListFragmentPresenter extends SimpleMvpLceRxPresenter<CityListC
     @Inject
     public CityListFragmentPresenter() {}
 
-    public void loadMovie(){
+    @Override
+    public void loadCityData(){
         txApiService.getCityList(subscribe(false));
     }
 

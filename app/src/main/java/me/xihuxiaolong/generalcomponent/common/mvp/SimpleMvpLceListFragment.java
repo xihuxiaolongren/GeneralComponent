@@ -17,12 +17,10 @@ import me.xihuxiaolong.generalcomponent.base.listener.EndlessRecyclerOnScrollLis
 /**
  *
  *
- * @param <M>  首次加载完成所有的数据结构，可以和D相同
- * @param <D>  每次列表加载的数据结构
+ * @param <M>  加载的列表数据结构
  */
-//public abstract class SimpleMvpLceListFragment<M, D> extends MvpLceFragment<SwipeRefreshLayout, M, IMvpLceListView<M, D>, SimpleMvpLceListRxPresenter<IMvpLceListView<M, D>, M, D> > implements IMvpLceListView<M,D>, SwipeRefreshLayout.OnRefreshListener {
-public abstract class SimpleMvpLceListFragment<M, D, P extends MvpPresenter<IMvpLceListView<M,D>>> extends MvpLceFragment<SwipeRefreshLayout, M, IMvpLceListView<M, D>, P>
-        implements IMvpLceListView<M,D>, SwipeRefreshLayout.OnRefreshListener {
+public abstract class SimpleMvpLceListFragment<M, V extends IMvpLceListView<M>, P extends MvpPresenter<V> > extends MvpLceFragment<SwipeRefreshLayout, M, V, P>
+        implements IMvpLceListView<M>, SwipeRefreshLayout.OnRefreshListener, LoadMoreRecyclerViewAdapter.LoadMoreAgainListener {
 
     protected RecyclerView recyclerView;
 //    protected SwipeRefreshLayout swipeRefreshLayout;
@@ -46,13 +44,14 @@ public abstract class SimpleMvpLceListFragment<M, D, P extends MvpPresenter<IMvp
         endlessRecyclerOnScrollListener = new EndlessRecyclerOnScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int current_page) {
-                loadMoreData();
+                loadmore();
             }
         };
         recyclerView.addOnScrollListener(endlessRecyclerOnScrollListener);
         adapter = createAdapter();
         if(adapter == null)
             throw new RuntimeException("adapter should not be null");
+        adapter.setLoadMoreAgainListener(this);
         recyclerView.setAdapter(adapter);
         contentView.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimary, R.color.colorPrimary, R.color.colorPrimary);
         contentView.setOnRefreshListener(this);
@@ -78,10 +77,6 @@ public abstract class SimpleMvpLceListFragment<M, D, P extends MvpPresenter<IMvp
         return e.getMessage();
     }
 
-//    @Override
-//    public void loadData(boolean pullToRefresh) {
-//    }
-
     @Override
     public void showLoadingMore() {
         adapter.showLoadingFooter(null);
@@ -101,9 +96,5 @@ public abstract class SimpleMvpLceListFragment<M, D, P extends MvpPresenter<IMvp
     public void showLoadMoreComplete() {
         adapter.showLoadingComplete(null);
     }
-
-//    @Override
-//    public void loadMoreData() {
-//    }
 
 }

@@ -16,11 +16,7 @@ import me.xihuxiaolong.generalcomponent.common.mvp.IMvpLceListView;
  * User: xiaolong
  * Date: 16/7/6.
  */
-public class DoubanMovieListFragmentPresenter extends SimpleMvpLceListRxPresenter<IMvpLceListView<List<Subject>, List<Subject>>, List<Subject>, List<Subject>> {
-
-    public static final int CREATE = 1;
-    public static final int REFRESH = 2;
-    public static final int LOADMORE = 3;
+public class DoubanMovieListFragmentPresenter extends SimpleMvpLceListRxPresenter<DoubanMovieListContract.IView, List<Subject>> implements DoubanMovieListContract.IPresenter{
 
     int start, count;
 
@@ -37,18 +33,6 @@ public class DoubanMovieListFragmentPresenter extends SimpleMvpLceListRxPresente
 
     }
 
-    public void loadMovie(int status){
-        if(status == CREATE) {
-            start = 0;
-            doubanApiService.getTopMovie(context, subscribe(false), start, count);
-        } else if(status == REFRESH) {
-            start = 0;
-            doubanApiService.getTopMovie(context, subscribe(true), start, count);
-        } else if(status == LOADMORE) {
-            doubanApiService.getTopMovie(context, subscribeLoadMore(), start, count);
-        }
-    }
-
     protected void onNext(List<Subject> data) {
         super.onNext(data);
         start += count;
@@ -59,4 +43,20 @@ public class DoubanMovieListFragmentPresenter extends SimpleMvpLceListRxPresente
         start += count;
     }
 
+    @Override
+    public void loadMovie() {
+        start = 0;
+        doubanApiService.getTopMovie(context, subscribe(false), start, count);
+    }
+
+    @Override
+    public void reLoadMovie() {
+        start = 0;
+        doubanApiService.getTopMovie(context, subscribe(true), start, count);
+    }
+
+    @Override
+    public void loadMoreMovie() {
+        doubanApiService.getTopMovie(context, subscribeLoadMore(), start, count);
+    }
 }

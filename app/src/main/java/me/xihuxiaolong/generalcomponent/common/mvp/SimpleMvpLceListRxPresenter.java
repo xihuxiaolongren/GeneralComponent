@@ -28,12 +28,12 @@ import rx.Subscriber;
  * @author Hannes Dorfmann
  * @since 1.0.0
  */
-public abstract class SimpleMvpLceListRxPresenter<V extends IMvpLceListView<M, D>, M, D>
+public abstract class SimpleMvpLceListRxPresenter<V extends IMvpLceListView<M>, M>
     extends MvpBasePresenter<V>
     implements MvpPresenter<V> {
 
   protected Subscriber<M> subscriberLoad;
-  protected Subscriber<D> subscriberLoadMore;
+  protected Subscriber<M> subscriberLoadMore;
 
   /**
    * Unsubscribes the subscriber and set it to null
@@ -79,7 +79,7 @@ public abstract class SimpleMvpLceListRxPresenter<V extends IMvpLceListView<M, D
   /**
    * Subscribes the presenter himself as subscriber on the observable
    */
-  public Subscriber<D> subscribeLoadMore() {
+  public Subscriber<M> subscribeLoadMore() {
 
     if (isViewAttached()) {
       getView().showLoadingMore();
@@ -87,7 +87,7 @@ public abstract class SimpleMvpLceListRxPresenter<V extends IMvpLceListView<M, D
 
     unsubscribe(subscriberLoadMore);
 
-    subscriberLoadMore = new Subscriber<D>() {
+    subscriberLoadMore = new Subscriber<M>() {
 
       @Override public void onCompleted() {
         SimpleMvpLceListRxPresenter.this.onLoadMoreCompleted();
@@ -97,8 +97,8 @@ public abstract class SimpleMvpLceListRxPresenter<V extends IMvpLceListView<M, D
         SimpleMvpLceListRxPresenter.this.onErrorLoadMore(e);
       }
 
-      @Override public void onNext(D d) {
-        SimpleMvpLceListRxPresenter.this.onLoadMoreNext(d);
+      @Override public void onNext(M data) {
+        SimpleMvpLceListRxPresenter.this.onLoadMoreNext(data);
       }
     };
 
@@ -132,9 +132,9 @@ public abstract class SimpleMvpLceListRxPresenter<V extends IMvpLceListView<M, D
     }
   }
 
-  protected void onLoadMoreNext(D d) {
+  protected void onLoadMoreNext(M data) {
     if (isViewAttached()) {
-      getView().setMoreData(d);
+      getView().setMoreData(data);
     }
   }
 

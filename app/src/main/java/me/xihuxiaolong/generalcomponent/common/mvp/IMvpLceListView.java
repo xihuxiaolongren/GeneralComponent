@@ -7,19 +7,19 @@ import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
  * User: xiaolong
  * Date: 16/7/5.
  */
-public interface IMvpLceListView<M, D> extends MvpLceView<M> {
+public interface IMvpLceListView<M> extends MvpLceView<M>{
 
-    public void setMoreData(D data);
+    void setMoreData(M data);
 
-    public void showLoadingMore();
+    void showLoadingMore();
 
-    public void showLoadMoreError();
+    void showLoadMoreError();
 
-    public void showLoadMoreComplete();
+    void showLoadMoreComplete();
 
-    public void showMoreData();
+    void showMoreData();
 
-    public void loadMoreData();
+    void loadMoreData();
 
 
 }

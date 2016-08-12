@@ -66,6 +66,10 @@ dependencies {
     compile 'com.google.dagger:dagger:2.5'
     provided 'javax.annotation:jsr250-api:1.0'
 
+    //事件驱动
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+
     compile 'com.timehop.stickyheadersrecyclerview:library:0.4.3@aar'
     compile 'com.bigkoo:quicksidebar:1.0.2'
 

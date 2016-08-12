@@ -27,7 +27,7 @@ public class CacheService implements ICacheService {
 	private IMainDatabaseManager databaseManager;
 
 	public CacheService(){
-		databaseManager = MainDatabaseManager.getInstance();
+//		databaseManager = MainDatabaseManager.getInstance();
 	}
 
 	@Override
