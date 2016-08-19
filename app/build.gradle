@@ -3,13 +3,13 @@ apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "me.xihuxiaolong.generalcomponent"
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
@@ -25,6 +25,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    // 多渠道打包
+    productFlavors {
+        company {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "guanfang"]
+        }
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
 }
 
 dependencies {
@@ -33,14 +44,21 @@ dependencies {
 
     compile project(':library')
     compile 'com.android.support:multidex:1.0.1'
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:design:23.4.0'
-    compile 'com.android.support:support-v4:23.4.0'
-    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:design:24.0.0'
+    compile 'com.android.support:support-v4:24.0.0'
+    compile 'com.android.support:recyclerview-v7:24.0.0'
 
     //json解析库
     compile 'com.google.code.gson:gson:2.6.2'
 
+    //友盟统计
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    //acra 崩溃日志上传
+    compile 'ch.acra:acra:4.9.0'
+
+    //json解析库
+    
     //view注入
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
     compile 'com.jakewharton:butterknife:8.1.0'
@@ -51,7 +69,7 @@ dependencies {
     //rx
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'io.reactivex:rxandroid:1.2.1'
-
+    
     //网络库
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
@@ -69,9 +87,20 @@ dependencies {
     //事件驱动
     compile 'org.greenrobot:eventbus:3.0.0'
 
+    //日志
+    compile 'com.orhanobut:logger:1.15'
+    compile 'com.jakewharton.timber:timber:4.2.0'
+
+    
+    
+    //tablayout
+    compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
+    //Optional: see how to use the utility.
+    compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.1@aar'
+    //Optional: see how to use the utility.
+    compile 'com.ogaclejapan.smarttablayout:utils-v13:1.6.1@aar'
 
     compile 'com.timehop.stickyheadersrecyclerview:library:0.4.3@aar'
     compile 'com.bigkoo:quicksidebar:1.0.2'
-
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
 }

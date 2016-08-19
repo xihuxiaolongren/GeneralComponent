@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#E9EEF4"
+    android:orientation="vertical"
+    android:paddingBottom="6dp">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_line"
+        android:background="@color/dividerLine" />
+
+    <TextView
+        android:id="@+id/movie_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/movie_image_iv"
+        android:background="@android:color/white"
+        android:padding="10dp"
+        android:minLines="3"
+        android:gravity="center_vertical"
+        android:textAppearance="?attr/textAppearanceListItem" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_line"
+        android:background="#C8CDD3" />
+</LinearLayout>

@@ -10,13 +10,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".main.MainActivity"
+    tools:context=".module.main.MainActivity"
     tools:showIn="@layout/activity_main">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
 
     <include layout="@layout/custom_single_big_solid_button"
         android:id="@+id/show_toolbar1_btn"
@@ -44,6 +39,22 @@
 
     <include layout="@layout/custom_single_big_solid_button"
         android:id="@+id/show_greendao_case"
+        android:layout_height="@dimen/default_big_button_height"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"/>
+
+    <include layout="@layout/custom_single_big_solid_button"
+        android:id="@+id/show_timepicker"
+        android:layout_height="@dimen/default_big_button_height"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"/>
+
+    <include layout="@layout/custom_single_big_solid_button"
+        android:id="@+id/show_multi_ui_module"
         android:layout_height="@dimen/default_big_button_height"
         android:layout_width="match_parent"
         android:layout_marginLeft="20dp"

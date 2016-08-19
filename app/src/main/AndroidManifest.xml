@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name=".common.MyApplication"
@@ -12,21 +14,26 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- 友盟SDK配置开始 -->
+        <meta-data android:value="57ae965a67e58ee552001054" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="${UMENG_CHANNEL_VALUE}" android:name="UMENG_CHANNEL"/>
+        <!-- 友盟SDK配置结束 -->
+
         <activity
-            android:name=".main.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".module.main.MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".toolbarshow.ToolbarShowActivity" />
-        <activity android:name=".doubanmovielist.DoubanMovieListActivity" />
-        <activity android:name=".shortnotelist.ShortNoteListActivity" />
-        <activity android:name=".shortnoteedit.ShortNoteEditActivity" />
-        <activity android:name=".citylist.CityListActivity" />
+        <activity android:name=".module.toolbarshow.ToolbarShowActivity" />
+        <activity android:name=".module.doubanmovielist.DoubanMovieListActivity" />
+        <activity android:name=".module.shortnotelist.ShortNoteListActivity" />
+        <activity android:name=".module.shortnoteedit.ShortNoteEditActivity" />
+        <activity android:name=".module.citylist.CityListActivity" />
     </application>
 
 </manifest>

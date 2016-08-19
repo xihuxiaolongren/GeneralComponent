@@ -5,4 +5,9 @@
     <string name="menu_delete">删除</string>
     <string name="menu_save">添加</string>
     <string name="shortnote_edit">便签</string>
+    <string name="douban_movie_list">豆瓣电影top250</string>
+    <string name="city_list">城市列表</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

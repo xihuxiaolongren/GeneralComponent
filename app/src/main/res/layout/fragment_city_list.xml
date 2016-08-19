@@ -1,68 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    tools:context=".citylist.CityListActivity">
+    android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <include
+        layout="@layout/errorview"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
-    <FrameLayout
+    <include
+        layout="@layout/loadingview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <RelativeLayout
+        android:id="@+id/contentView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            layout="@layout/errorview"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_height="match_parent" />
 
-        <include
-            layout="@layout/loadingview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+        <com.bigkoo.quicksidebar.QuickSideBarTipsView
+            android:id="@+id/quickSideBarTipsView"
+            android:layout_width="@dimen/height_quicksidebartips"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/quickSideBarView"
+            app:sidebarBackgroundColor="@color/colorPrimary"
+            app:sidebarTextColor="@android:color/white"
+            app:sidebarTextSize="@dimen/textSize_quicksidebartips" />
 
-        <RelativeLayout
-            android:id="@+id/contentView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <com.bigkoo.quicksidebar.QuickSideBarView
+            android:id="@+id/quickSideBarView"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="35dp"
+            app:sidebarItemHeight="18dp"
+            app:sidebarTextColor="@android:color/black"
+            app:sidebarTextColorChoose="@color/colorPrimary"
+            app:sidebarTextSize="@dimen/textSize_quicksidebar"
+            app:sidebarTextSizeChoose="@dimen/textSize_quicksidebar_choose" />
+    </RelativeLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <com.bigkoo.quicksidebar.QuickSideBarTipsView
-                android:id="@+id/quickSideBarTipsView"
-                android:layout_width="@dimen/height_quicksidebartips"
-                android:layout_height="match_parent"
-                android:layout_toLeftOf="@+id/quickSideBarView"
-                app:sidebarBackgroundColor="@color/colorPrimary"
-                app:sidebarTextColor="@android:color/white"
-                app:sidebarTextSize="@dimen/textSize_quicksidebartips" />
-
-            <com.bigkoo.quicksidebar.QuickSideBarView
-                android:id="@+id/quickSideBarView"
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="35dp"
-                app:sidebarItemHeight="18dp"
-                app:sidebarTextColor="@android:color/black"
-                app:sidebarTextColorChoose="@color/colorPrimary"
-                app:sidebarTextSize="@dimen/textSize_quicksidebar"
-                app:sidebarTextSizeChoose="@dimen/textSize_quicksidebar_choose" />
-        </RelativeLayout>
-
-    </FrameLayout>
-
-</LinearLayout>
+</FrameLayout>
