@@ -1,0 +1,215 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/section_circle_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleIV1"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/hugh"
+                app:civ_border_color="@android:color/black"
+                app:civ_border_width="2dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/hugh" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/hugh"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="2dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/section_fix_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <android.support.percent.PercentRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/g_2banner"
+                        app:layout_aspectRatio="200%"
+                        app:layout_widthPercent="100%" />
+                    <!-- The rest of your layout -->
+                </android.support.percent.PercentRelativeLayout>
+
+                <android.support.percent.PercentRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/g_2banner"
+                        app:layout_aspectRatio="200%"
+                        app:layout_widthPercent="100%" />
+                    <!-- The rest of your layout -->
+                </android.support.percent.PercentRelativeLayout>
+
+            </LinearLayout>
+
+            <me.xihuxiaolong.library.widget.AspectRatioImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/g_2banner"
+                app:aspectRatio="1"
+                app:aspectRatioEnabled="true" />
+
+        </LinearLayout>
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <uk.co.senab.photoview.PhotoView
+                android:id="@+id/photoView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_aspectRatio="200%"
+                app:layout_widthPercent="100%" />
+        </android.support.percent.PercentRelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/crop_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                fancy:fb_defaultColor="@color/colorPrimary"
+                fancy:fb_focusColor="@color/colorPrimaryDark"
+                fancy:fb_radius="4dp"
+                fancy:fb_text="crop Image"
+                fancy:fb_textColor="@android:color/white" />
+
+            <com.rey.material.widget.CheckBox
+                android:id="@+id/switches_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/crop_image"
+                android:layout_alignParentRight="true"
+                android:checked="false"
+                android:gravity="center_vertical"
+                android:text="限制为正方形" />
+
+            <ImageView
+                android:id="@+id/resultView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/crop_image"
+                android:adjustViewBounds="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/select_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                fancy:fb_defaultColor="@color/colorPrimary"
+                fancy:fb_focusColor="@color/colorPrimaryDark"
+                fancy:fb_radius="4dp"
+                fancy:fb_text="crop Image"
+                android:layout_marginRight="10dp"
+                fancy:fb_textColor="@android:color/white" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_select_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/select_image"
+                android:hint="选择图片数量"
+                android:inputType="number"
+                android:textSize="16sp"
+                app:met_hideUnderline="true"
+                app:met_primaryColor="@color/colorPrimary"
+                app:met_textColor="@color/black_333333"
+                app:met_textColorHint="@color/black_333333" />
+
+            <com.rey.material.widget.Switch
+                android:id="@+id/switches_crop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/select_image"
+                android:layout_alignParentRight="true"
+                android:checked="false"
+                android:gravity="center"
+                android:padding="16dp"
+                android:textOff="剪切模式"
+                android:textOn="普通模式" />
+            <!--<com.rey.material.widget.CheckBox-->
+            <!--android:id="@+id/switches_crop"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignBaseline="@id/select_image"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:checked="false"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="限制为正方形" />-->
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/select_image"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

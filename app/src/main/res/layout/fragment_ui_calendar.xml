@@ -1,0 +1,81 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pageBg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/datePicker1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="betterpickers"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/selectedTime1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="请选择日期"
+                android:textColor="@color/black_cccccc"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/next" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/datePicker2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="自定义滚动选择器"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/selectedTime2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="请选择日期"
+                android:textColor="@color/black_cccccc"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/next" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

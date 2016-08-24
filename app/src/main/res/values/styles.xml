@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -9,13 +9,23 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style tools:ignore="NewApi" name="CustomTheme" parent="android:Theme.DeviceDefault">
+        <item name="cropImageStyle">@style/Widget.CropImageView</item>
+    </style>
+
+    <style name="Widget.CropImageView" parent="android:Widget">
+        <item name="showThirds">true</item>
+        <item name="showCircle">false</item>
+        <item name="showHandles">always</item>
+        <item name="highlightColor">@color/highlight</item>
+    </style>
 
 </resources>

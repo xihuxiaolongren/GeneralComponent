@@ -7,6 +7,9 @@ import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import javax.inject.Inject;
 
@@ -38,6 +41,8 @@ public class ImageService {
         loadImage(context, view, url, scaleType, defaultPlaceholderId, diskCacheStrategy);
     }
 
+
+
     public void loadImageFromFile(Context context, ImageView view, String uri) {
         loadImage(context, view, "file://" + uri, null, defaultPlaceholderId, DiskCacheStrategy.NONE);
     }
@@ -58,10 +63,12 @@ public class ImageService {
             builder = request.fitCenter();
         }else if(ImageView.ScaleType.CENTER_CROP == scaleType){
             builder = request.centerCrop();
+        }else{
+            builder = request.centerCrop();
         }
         if(placeholderId != -1)
             request.placeholder(placeholderId);
-        builder.crossFade()
+        builder.dontAnimate()
                 .diskCacheStrategy(diskCacheStrategy)
                 .into(view);
     }

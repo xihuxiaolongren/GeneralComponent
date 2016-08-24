@@ -14,17 +14,24 @@ import me.xihuxiaolong.library.R;
  */
 public class DialogUtil {
 
-    public static MaterialDialog showDialog(Context context, String title, String content, MaterialDialog.SingleButtonCallback positiveCallback){
+    public static MaterialDialog showDialog(Context context, CharSequence title, CharSequence content){
+        return showDialog(context, title, content, null);
+    }
+
+    public static MaterialDialog showDialog(Context context, CharSequence title, CharSequence content, MaterialDialog.SingleButtonCallback positiveCallback){
         MaterialDialog.Builder builder = new MaterialDialog.Builder(context);
         if(title != null)
             builder.title(title);
         if(content != null)
             builder.content(content);
-        if(positiveCallback != null)
-            builder.onPositive(positiveCallback);
+        if(positiveCallback != null) {
+            builder.onPositive(positiveCallback)
+                    .positiveText(R.string.agree)
+                    .negativeText(R.string.disagree);
+        }else {
+            builder.negativeText(R.string.close);
+        }
         return builder
-                .positiveText(R.string.agree)
-                .negativeText(R.string.disagree)
                 .limitIconToDefaultSize()
                 .show();
     }

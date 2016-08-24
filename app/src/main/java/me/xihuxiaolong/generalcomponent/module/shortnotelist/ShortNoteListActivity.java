@@ -23,7 +23,6 @@ public class ShortNoteListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setTitle(R.string.shortnote_edit);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()

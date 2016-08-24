@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".common.MyApplication"
@@ -34,6 +35,9 @@
         <activity android:name=".module.shortnotelist.ShortNoteListActivity" />
         <activity android:name=".module.shortnoteedit.ShortNoteEditActivity" />
         <activity android:name=".module.citylist.CityListActivity" />
+        <activity android:name=".module.uishow.UIShowActivity" />
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity"
+            android:theme="@style/CustomTheme"/>
     </application>
 
 </manifest>

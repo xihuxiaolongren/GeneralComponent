@@ -33,7 +33,6 @@ public class DoubanMovieListAdapter extends LoadMoreRecyclerViewAdapter<Recycler
     protected RecyclerView.ViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
         View rootview = mLayoutInflater.inflate(R.layout.item_douban_movie, parent, false);
         DoubanMovieViewHolder doubanMovieViewHolder = new DoubanMovieViewHolder(rootview);
-
         return doubanMovieViewHolder;
     }
 

@@ -20,6 +20,7 @@ import antistatic.spinnerwheel.AbstractWheel;
 import antistatic.spinnerwheel.OnWheelChangedListener;
 import antistatic.spinnerwheel.adapters.AbstractWheelTextAdapter;
 import me.xihuxiaolong.library.R;
+import mehdi.sakout.fancybuttons.FancyButton;
 
 /**
  * Created by IntelliJ IDEA.
@@ -36,6 +37,8 @@ public class TimePickerDialogplus {
     private ConfirmListener mConfirmListener;
 
     DateTime mStartDate, mEndDate;
+
+    AbstractWheel yearWV, monthWV, dayWV;
 
     public void getDialog(Context context, DateTime startDate, DateTime endDate, ConfirmListener confirmListener) {
         this.mContext = context;
@@ -55,7 +58,7 @@ public class TimePickerDialogplus {
         void selectedTime(DateTime dateTime);
     }
 
-    List<DateTime.Property> yearProperties, monthProperties;
+    List<DateTime.Property> yearProperties, monthProperties, dayProperties;
 
     private void updateYear(AbstractWheel yearWV, DateTime startDate, DateTime endDate){
         yearProperties = new ArrayList<>();
@@ -82,21 +85,30 @@ public class TimePickerDialogplus {
                 mStartDate : startDate;
         endDate = endDate.isBefore(mEndDate) ?
                 endDate : mEndDate;
-        List<DateTime.Property> properties = new ArrayList<>();
+        dayProperties =  new ArrayList<>();
         for(DateTime date = startDate; date.isBefore(endDate); date = date.plusDays(1)){
-            properties.add(date.dayOfMonth());
+            dayProperties.add(date.dayOfMonth());
         }
-        dayWV.setViewAdapter(new WheelTextAdapter(mContext, properties));
+        dayWV.setViewAdapter(new WheelTextAdapter(mContext, dayProperties));
     }
 
-    private void initView(DialogPlus dialog) {
-        final AbstractWheel yearWV = (AbstractWheel) dialog.findViewById(R.id.yearWV);
+    private void initView(final DialogPlus dialog) {
+        FancyButton confirmBtn = (FancyButton) dialog.findViewById(R.id.confirmBtn);
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DateTime.Property dayProperty = dayProperties.get(dayWV.getCurrentItem() % dayProperties.size());
+                mConfirmListener.selectedTime(dayProperty.getDateTime());
+                dialog.dismiss();
+            }
+        });
+        yearWV = (AbstractWheel) dialog.findViewById(R.id.yearWV);
         yearWV.setInterpolator(new AnticipateOvershootInterpolator());
         yearWV.setCyclic(true);
-        final AbstractWheel monthWV = (AbstractWheel) dialog.findViewById(R.id.monthWV);
+        monthWV = (AbstractWheel) dialog.findViewById(R.id.monthWV);
         monthWV.setInterpolator(new AnticipateOvershootInterpolator());
         monthWV.setCyclic(true);
-        final AbstractWheel dayWV = (AbstractWheel) dialog.findViewById(R.id.dayWV);
+        dayWV = (AbstractWheel) dialog.findViewById(R.id.dayWV);
         dayWV.setInterpolator(new AnticipateOvershootInterpolator());
         dayWV.setCyclic(true);
 

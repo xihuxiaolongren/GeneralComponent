@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:id="@+id/header_container"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:gravity="center_vertical">
 
     <TextView
         android:layout_width="0dp"
@@ -13,13 +14,21 @@
         android:layout_weight="1"
         android:text="时间选择器"
         android:textColor="@android:color/black"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 
-    <TextView
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/confirmBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="请选择"
-        android:textColor="@color/dialogplus_black_overlay"
-        android:textSize="14sp"/>
+        fancy:fb_defaultColor="@color/colorPrimary"
+        fancy:fb_focusColor="@color/colorPrimaryDark"
+        fancy:fb_radius="4dp"
+        fancy:fb_text="@string/agree"
+        fancy:fb_textSize="14sp"
+        fancy:fb_textColor="@android:color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"/>
 
 </LinearLayout>

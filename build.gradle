@@ -19,6 +19,7 @@ allprojects {
         jcenter()
         mavenCentral()
         maven { url "http://dl.bintray.com/jjhesk/maven" }
+        maven { url "https://jitpack.io" }
     }
 }
 

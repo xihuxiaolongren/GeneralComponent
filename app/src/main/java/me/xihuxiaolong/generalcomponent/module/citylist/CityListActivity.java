@@ -23,7 +23,6 @@ public class CityListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setTitle(R.string.city_list);
 
         if (savedInstanceState == null) {

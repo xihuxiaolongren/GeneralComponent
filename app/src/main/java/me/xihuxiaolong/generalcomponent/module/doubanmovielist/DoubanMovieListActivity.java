@@ -23,7 +23,6 @@ public class DoubanMovieListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setTitle(R.string.douban_movie_list);
 
         if (savedInstanceState == null) {
