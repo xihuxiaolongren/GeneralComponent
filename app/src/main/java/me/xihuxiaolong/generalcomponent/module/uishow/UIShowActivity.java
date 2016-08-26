@@ -44,8 +44,8 @@ public class UIShowActivity extends BaseActivity {
                 getSupportFragmentManager(), FragmentPagerItems.with(this)
                 .add("日历控件", UICalendarFragment.class)
                 .add("button系列", UIButtonFragment.class)
-                .add("图片控件", UIImageFragment.class)
-                .add("Android各个Support Library介绍", UIButtonFragment.class)
+                .add("图片显示控件", UIImageShowFragment.class)
+                .add("图片处理系列", UIImageProcessFragment.class)
                 .create());
 
         viewpager.setAdapter(adapter);

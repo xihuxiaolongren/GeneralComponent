@@ -32,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/colorPrimary"
+            android:paddingBottom="4dp"
             app:stl_indicatorWithoutPadding="true"
             app:stl_defaultTabTextColor="@android:color/white"
             app:stl_defaultTabTextHorizontalPadding="24dp"
@@ -39,8 +40,7 @@
             app:stl_indicatorCornerRadius="1.5dp"
             app:stl_indicatorInterpolation="smart"
             app:stl_indicatorThickness="3dp"
-            app:stl_underlineColor="@color/colorPrimaryDark"
-            app:stl_underlineThickness="0.5dp"
+            app:stl_underlineColor="@android:color/transparent"
             />
 
         <android.support.v4.view.ViewPager

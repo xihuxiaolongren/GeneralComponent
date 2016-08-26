@@ -27,7 +27,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     LayoutInflater inflater;
     List<String> imageses;
     Context context;
-    public static RecyclerView.LayoutParams params;
+//    public static RecyclerView.LayoutParams params;
     LinkedHashSet hashmap;
     public int currentChoseMode;
     int sWidthPix;
@@ -36,9 +36,9 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         this.context = context;
         this.imageses = imageses;
         sWidthPix = context.getResources().getDisplayMetrics().widthPixels;
-        params = new RecyclerView.LayoutParams(sWidthPix / 3, sWidthPix / 3);
-        int dp3 = dip2px(context, 1);
-        params.setMargins(dp3, dp3, dp3, dp3);
+//        params = new RecyclerView.LayoutParams(sWidthPix / 3, sWidthPix / 3);
+//        int dp3 = dip2px(context, 1);
+//        params.setMargins(dp3, dp3, dp3, dp3);
         currentChoseMode = chosemode;
         hashmap = ((MediaChoseActivity) context).getImageChoseMap();
     }
@@ -203,7 +203,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         public ImageViewHolder(View itemView) {
             super(itemView);
-            itemView.setLayoutParams(params);
             iv_image = (ImageView) itemView.findViewById(R.id.iv_image);
             alpha_view = itemView.findViewById(R.id.alpha_view);
             checkBox = (CheckBox) itemView.findViewById(R.id.checkimages);
@@ -213,7 +212,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public LinearLayout camera_lin;
         public CameraViewHolder(View itemView) {
             super(itemView);
-            itemView.setLayoutParams(params);
             camera_lin= (LinearLayout) itemView.findViewById(R.id.camera_lin);
         }
     }

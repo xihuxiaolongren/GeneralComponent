@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import me.xihuxiaolong.library.utils.GridSpacingItemDecoration;
 import me.xihuxiaolongren.photoga.mode.ImageFolder;
 
 
@@ -84,6 +85,8 @@ public class PhotoGalleryFragment extends Fragment {
             adapter.setNeedCamera(isNeedCamera);
             adapter.setMaxChoseCount(maxChoseCount);
         }
+        int spacing = 4; // px
+        mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(3, spacing, false));
         mRecyclerView.setHasFixedSize(true);
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 3);
         mRecyclerView.setLayoutManager(layoutManager);

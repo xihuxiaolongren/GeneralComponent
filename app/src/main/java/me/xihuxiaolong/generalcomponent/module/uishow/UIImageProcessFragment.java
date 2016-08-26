@@ -15,9 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -32,7 +30,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import me.xihuxiaolong.generalcomponent.R;
@@ -40,20 +37,14 @@ import me.xihuxiaolong.generalcomponent.common.image.ImageService;
 import me.xihuxiaolong.generalcomponent.common.util.ActivityUtils;
 import me.xihuxiaolong.library.utils.CollectionUtil;
 import me.xihuxiaolong.library.utils.DialogUtil;
+import me.xihuxiaolong.library.utils.GridSpacingItemDecoration;
 import me.xihuxiaolongren.photoga.MediaChoseActivity;
 import mehdi.sakout.fancybuttons.FancyButton;
+import timber.log.Timber;
 import uk.co.senab.photoview.PhotoView;
 
-public class UIImageFragment extends Fragment {
+public class UIImageProcessFragment extends Fragment {
 
-    public ImageService imageService;
-
-    LayoutInflater mLayoutInflater;
-
-    @BindView(R.id.photoView)
-    PhotoView photoView;
-    @BindView(R.id.circleIV1)
-    CircleImageView circleIV1;
     @BindView(R.id.crop_image)
     FancyButton cropImage;
     @BindView(R.id.switches_cb)
@@ -77,16 +68,10 @@ public class UIImageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_ui_image, container, false);
+        View view = inflater.inflate(R.layout.fragment_ui_image_process, container, false);
         setHasOptionsMenu(true);
         ButterKnife.bind(this, view);
 
-        imageService = ActivityUtils.getAppComponent(getActivity()).getImageService();
-
-        mLayoutInflater = LayoutInflater.from(getContext());
-
-        imageService.loadImageFromUrl(getContext(), "http://pbs.twimg.com/media/Bist9mvIYAAeAyQ.jpg", circleIV1);
-        imageService.loadImageFromUrl(getContext(), "http://pbs.twimg.com/media/Bist9mvIYAAeAyQ.jpg", photoView);
         return view;
     }
 
@@ -98,6 +83,12 @@ public class UIImageFragment extends Fragment {
                 return true;
         }
         return false;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        etSelectNum.clearFocus();
     }
 
     @Override
@@ -137,6 +128,9 @@ public class UIImageFragment extends Fragment {
             if (result != null && !CollectionUtil.isEmpty(result.getStringArrayListExtra("data"))) {
                 ArrayList<String> uri = result.getStringArrayListExtra("data");
                 int spanCount = uri.size() < 3 ? uri.size() : 3;
+                int spacing = 20; // 50px
+                boolean includeEdge = false;
+                recyclerView.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, includeEdge));
                 recyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
                 recyclerView.setAdapter(new CommonAdapter<String>(getContext(), R.layout.item_image, uri)
                 {

@@ -23,6 +23,7 @@ dependencies {
     compile 'com.android.support:support-v4:24.0.0'
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:recyclerview-v7:24.0.0'
+    compile 'com.android.support:percent:24.0.0'
 
     compile 'com.edmodo:cropper:1.0.1'
     //图片裁剪
@@ -33,4 +34,5 @@ dependencies {
 
     compile 'com.soundcloud.android:android-crop:1.0.1@aar'
 
+    compile project(path: ':library')
 }
