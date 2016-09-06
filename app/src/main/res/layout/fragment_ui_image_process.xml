@@ -108,6 +108,19 @@
                 android:layout_below="@id/select_image" />
         </RelativeLayout>
 
+        <me.xihuxiaolong.generalcomponent.common.view.AddPhotoView
+            android:id="@+id/addphoto"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="10dp" />
+
+        <ImageView
+            android:id="@+id/addphotoResultShow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:scaleType="fitXY"/>
+
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

@@ -31,19 +31,19 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import de.hdodenhof.circleimageview.CircleImageView;
 import me.xihuxiaolong.generalcomponent.R;
 import me.xihuxiaolong.generalcomponent.common.image.ImageService;
 import me.xihuxiaolong.generalcomponent.common.util.ActivityUtils;
+import me.xihuxiaolong.generalcomponent.common.view.AddPhotoView;
 import me.xihuxiaolong.library.utils.CollectionUtil;
 import me.xihuxiaolong.library.utils.DialogUtil;
 import me.xihuxiaolong.library.utils.GridSpacingItemDecoration;
 import me.xihuxiaolongren.photoga.MediaChoseActivity;
 import mehdi.sakout.fancybuttons.FancyButton;
-import timber.log.Timber;
-import uk.co.senab.photoview.PhotoView;
 
 public class UIImageProcessFragment extends Fragment {
+
+    ImageService imageService;
 
     @BindView(R.id.crop_image)
     FancyButton cropImage;
@@ -59,10 +59,15 @@ public class UIImageProcessFragment extends Fragment {
     MaterialEditText etSelectNum;
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
+    @BindView(R.id.addphoto)
+    AddPhotoView addphoto;
+    @BindView(R.id.addphotoResultShow)
+    ImageView addphotoResultShow;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        imageService = ActivityUtils.getAppComponent(getActivity()).getImageService();
     }
 
     @Override
@@ -101,16 +106,30 @@ public class UIImageProcessFragment extends Fragment {
         Crop.pickImage(getActivity(), this);
     }
 
+    int request;
 
     @OnClick(R.id.select_image)
     void selectImageClick(View v) {
+        request = 0;
         Intent intent = new Intent(getActivity(), MediaChoseActivity.class);
         //chose_mode选择模式 0单选 1多选
         intent.putExtra("chose_mode", switchesCrop.isChecked() ? 0 : 1);
         //最多支持选择多少张
-        if(TextUtils.isEmpty(etSelectNum.getText()))
+        if (TextUtils.isEmpty(etSelectNum.getText()))
             return;
         intent.putExtra("max_chose_count", Integer.parseInt(etSelectNum.getText().toString()));
+        //是否显示需要第一个是图片相机按钮
+        intent.putExtra("isNeedfcamera", true);
+        //是否剪裁图片(只有单选模式才有剪裁)
+        intent.putExtra("crop", switchesCrop.isChecked());
+        startActivityForResult(intent, MediaChoseActivity.REQUEST_CODE_CAMERA);
+    }
+
+    @OnClick(R.id.addphoto)
+    void addphotoClick(View v) {
+        request = 1;
+        Intent intent = new Intent(getActivity(), MediaChoseActivity.class);
+        intent.putExtra("chose_mode", 0);
         //是否显示需要第一个是图片相机按钮
         intent.putExtra("isNeedfcamera", true);
         //是否剪裁图片(只有单选模式才有剪裁)
@@ -126,21 +145,28 @@ public class UIImageProcessFragment extends Fragment {
             handleCrop(resultCode, result);
         } else if (requestCode == MediaChoseActivity.REQUEST_CODE_CAMERA) {
             if (result != null && !CollectionUtil.isEmpty(result.getStringArrayListExtra("data"))) {
-                ArrayList<String> uri = result.getStringArrayListExtra("data");
-                int spanCount = uri.size() < 3 ? uri.size() : 3;
-                int spacing = 20; // 50px
-                boolean includeEdge = false;
-                recyclerView.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, includeEdge));
-                recyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
-                recyclerView.setAdapter(new CommonAdapter<String>(getContext(), R.layout.item_image, uri)
-                {
-                    @Override
-                    protected void convert(ViewHolder holder, String s, int position) {
-                        ImageView imageView = holder.getView(R.id.image_iv);
-                        imageView.setImageURI(Uri.parse(s));
-                    }
-
-                });
+                ArrayList<String> uris = result.getStringArrayListExtra("data");
+                if(request == 0) {
+                    int spanCount = uris.size() < 3 ? uris.size() : 3;
+                    int spacing = 20; // 50px
+                    boolean includeEdge = false;
+                    recyclerView.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, includeEdge));
+                    recyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
+                    recyclerView.setAdapter(new CommonAdapter<String>(getContext(), R.layout.item_image, uris) {
+                        @Override
+                        protected void convert(ViewHolder holder, String s, int position) {
+                            ImageView imageView = holder.getView(R.id.image_iv);
+                            imageView.setImageURI(Uri.parse(s));
+                        }
+                    });
+                }else if(request == 1){
+                    addphoto.startUp(uris.get(0), "上传图片成功", new AddPhotoView.UploadListener() {
+                        @Override
+                        public void uploadSuccess(String picUrl) {
+                            imageService.loadImageFromUrl(getContext(), picUrl, addphotoResultShow);
+                        }
+                    });
+                }
             }
         }
     }

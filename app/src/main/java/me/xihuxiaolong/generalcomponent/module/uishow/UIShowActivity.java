@@ -46,6 +46,7 @@ public class UIShowActivity extends BaseActivity {
                 .add("button系列", UIButtonFragment.class)
                 .add("图片显示控件", UIImageShowFragment.class)
                 .add("图片处理系列", UIImageProcessFragment.class)
+                .add("文字处理系列", UITextShowFragment.class)
                 .create());
 
         viewpager.setAdapter(adapter);

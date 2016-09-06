@@ -58,7 +58,7 @@ public class DoubanApiService implements IDoubanApiService {
         return Observable.create(new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
-                boolean isConnected = NetUtil.isConnected(context);
+                boolean isConnected = NetUtil.isConnected(context.getApplicationContext());
                 if (!isConnected) {
                     throw new ApiException("Wi-Fi和移动数据已断开");
                 }

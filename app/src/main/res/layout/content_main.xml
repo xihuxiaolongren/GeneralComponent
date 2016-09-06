@@ -13,45 +13,4 @@
     tools:context=".module.main.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <include layout="@layout/custom_single_big_solid_button"
-        android:id="@+id/show_toolbar1_btn"
-        android:layout_height="@dimen/default_big_button_height"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"/>
-
-    <include layout="@layout/custom_single_big_solid_button"
-        android:id="@+id/show_mvp_list"
-        android:layout_height="@dimen/default_big_button_height"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"/>
-
-    <include layout="@layout/custom_single_big_solid_button"
-        android:id="@+id/show_mvp_sticky_list"
-        android:layout_height="@dimen/default_big_button_height"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"/>
-
-    <include layout="@layout/custom_single_big_solid_button"
-        android:id="@+id/show_greendao_case"
-        android:layout_height="@dimen/default_big_button_height"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"/>
-
-    <include layout="@layout/custom_single_big_solid_button"
-        android:id="@+id/show_multi_ui_module"
-        android:layout_height="@dimen/default_big_button_height"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"/>
-
-
 </LinearLayout>
