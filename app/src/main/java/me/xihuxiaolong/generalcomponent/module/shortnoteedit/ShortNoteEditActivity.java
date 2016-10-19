@@ -27,7 +27,7 @@ public class ShortNoteEditActivity extends AppCompatActivity {
 
         ShortNoteEditFragment shortNoteEditFragment = new ShortNoteEditFragment();
         Long shortnoteId = getIntent().getLongExtra(ShortNoteEditFragment.ARGUMENT_EDIT_SHORTNOTE_ID, -1L);
-        if(shortnoteId != null) {
+        if(shortnoteId != -1L) {
             Bundle bundle = new Bundle();
             bundle.putLong(ShortNoteEditFragment.ARGUMENT_EDIT_SHORTNOTE_ID, shortnoteId);
             shortNoteEditFragment.setArguments(bundle);

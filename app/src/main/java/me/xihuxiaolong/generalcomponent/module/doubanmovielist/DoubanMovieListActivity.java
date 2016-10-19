@@ -5,8 +5,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import com.r0adkll.slidr.Slidr;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.xihuxiaolong.generalcomponent.R;
@@ -21,7 +19,6 @@ public class DoubanMovieListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_common);
         ButterKnife.bind(this);
-        Slidr.attach(this);
 
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();

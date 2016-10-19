@@ -67,7 +67,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile project(':library')
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
@@ -124,7 +123,6 @@ dependencies {
     compile 'com.github.rey5137:material:1.2.4'
     compile 'com.zhy:base-rvadapter:3.0.3'
     compile 'com.github.castorflex.smoothprogressbar:library:1.1.0'
-    compile project(path: ':photoga')
     compile files('libs/aliyun-oss-sdk-android-2.2.1.jar')
     compile files('libs/BaiduLBS_Android.jar')
 
@@ -132,9 +130,12 @@ dependencies {
         transitive = true
     }
 
-    compile 'com.r0adkll:slidableactivity:2.0.5'
+//    compile 'com.r0adkll:slidableactivity:2.0.5'
 
     compile 'me.grantland:autofittextview:0.2.1'
     compile 'hanks.xyz:htextview-library:0.1.5'
     compile 'com.ms-square:expandableTextView:0.1.4'
+
+    compile project(':library')
+    compile project(path: ':photoga')
 }

@@ -110,6 +110,8 @@ public class MyApplication extends Application {
                 .imageServiceModule(new ImageServiceModule())
                 .databaseManagerModule(new DatabaseManagerModule())
                 .build();
+
+        //打开数据库连接
         mAppComponent.getMainDatabaseManager().initDatabase(-1L);
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree(){

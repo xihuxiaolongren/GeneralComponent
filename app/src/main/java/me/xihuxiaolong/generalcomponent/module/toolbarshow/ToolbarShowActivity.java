@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.r0adkll.slidr.Slidr;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.xihuxiaolong.generalcomponent.R;
@@ -32,7 +30,6 @@ public class ToolbarShowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolbar_show);
         ButterKnife.bind(this);
-        Slidr.attach(this);
 
         toolbarLeftText.setLeftFirstAreaClickListener(new View.OnClickListener() {
             @Override
