@@ -1,10 +1,12 @@
-#GeneralComponent
+# GeneralComponent
 
 
-###项目简介：
+### 项目简介：
 收集好用的轮子&开发测试工具，详细了解它的适用场景、用法（常规用法给出使用示例）以及和相似轮子的对比，实现快速搭建一个能够实现完整功能并具有良好扩展性的Android工程；
 
-###功能清单：（排名分先后）
+[DEMO下载](http://fir.im/dvtk)
+
+### 功能清单：（排名分先后）
 
 1. 日志上传：
 	- 	崩溃日志（acra，比友盟好在开源，定制化比较高，可由技术主导，把崩溃等信息和其它数据分开）
@@ -38,7 +40,7 @@
 18. 推送：同上，推荐使用个推等第三方服务；
 19. 直播：[一言不合你就用环信搞个直播APP](http://blog.csdn.net/mengmakies/article/details/51794248)
 
-###参考：
+### 参考：
 [Android 开源项目分类汇总](https://github.com/Trinea/android-open-project)
 
 [最美应用－从Android研发工程师的角度之[厨房故事]] (http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0813/3296.html)
